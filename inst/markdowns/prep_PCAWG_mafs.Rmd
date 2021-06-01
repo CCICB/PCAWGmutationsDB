@@ -1,0 +1,158 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Libraries
+
+```{r}
+library(data.table)
+library(tidyverse)
+library(readxl)
+library(ggVennDiagram)
+library(maftools)
+```
+
+
+# Download MAF
+First we download the PCAWG final SNV,MNV,INDEL calls. This file contains the ICGC portion of the PCAWG consensus callsets for SNV/Indel.
+
+`https://dcc.icgc.org/api/v1/download?fn=/PCAWG/consensus_snv_indel/final_consensus_passonly.snv_mnv_indel.icgc.public.maf.gz`
+
+```{r eval=FALSE, include=FALSE}
+pcawg_maf_url = "https://dcc.icgc.org/api/v1/download?fn=/PCAWG/consensus_snv_indel/final_consensus_passonly.snv_mnv_indel.icgc.public.maf.gz"
+pcawg_maf_path = pcawg_maf_url %>% strsplit(split = "/") %>% unlist %>% tail(n=1)
+
+download.file(pcawg_maf_url, destfile = pcawg_maf_path) # commented to make sure it never runs
+```
+
+
+If you don't want MNVs and just want SNVs and indels, download:
+`https://dcc.icgc.org/api/v1/download?fn=/PCAWG/consensus_snv_indel/final_consensus_snv_indel_passonly_icgc.public.tgz`
+
+See `https://dcc.icgc.org/releases/PCAWG/consensus_snv_indel` for details.
+
+
+# Prepare MAF data
+
+```{r eval=FALSE, include=FALSE}
+pcawg_df <- data.table::fread("final_consensus_passonly.snv_mnv_indel.icgc.public.maf")
+pcawg_df
+```
+
+Next we select only the most important MAF columns to save on space
+
+```{r eval=FALSE, include=FALSE}
+pcawg_minimal_columns_df <- pcawg_df %>% dplyr::select("Hugo_Symbol", "Chromosome", Start_Position = "Start_position", End_Position = "End_position", "Reference_Allele", "Tumor_Seq_Allele2", "Variant_Classification", "Variant_Type", "Tumor_Sample_Barcode", "t_ref_count", "t_alt_count", "Donor_ID","Project_Code")
+```
+
+
+We'll then split data by project_code, so we can create a separate MAF object for each cohort
+
+```{r eval=FALSE, include=FALSE}
+
+# Look at all the different Project Codes
+pcawg_minimal_columns_df %>%
+  dplyr::count(Project_Code, sort = TRUE)
+
+# Split df into a list of dfs, one for each Project_Code
+pcawg_split_ls = split(pcawg_minimal_columns_df, f = pcawg_minimal_columns_df$Project_Code)
+```
+
+
+# Prepare Metadata
+
+Before we create our MAF objects, we'll need some metadata:
+
+1. Download histology metadata from
+`https://dcc.icgc.org/api/v1/download?fn=/PCAWG/clinical_and_histology/pcawg_specimen_histology_August2016_v9.xlsx`
+
+2. Download clinical metadata from 
+`https://dcc.icgc.org/api/v1/download?fn=/PCAWG/clinical_and_histology/pcawg_donor_clinical_August2016_v9.xlsx`
+
+3. We'll also need the sample sheet to bring everything together:
+ `https://dcc.icgc.org/api/v1/download?fn=/PCAWG/data_releases/latest/pcawg_sample_sheet.tsv`
+This `aliquot_id` column in the sample sheet corresponds to the 'Tumor_Sample_Barcodes' in the MAF
+
+See
+`https://dcc.icgc.org/releases/PCAWG/clinical_and_histology` and `https://dcc.icgc.org/releases/PCAWG/data_releases/latest` for more info
+
+## Download
+```{r eval=FALSE, include=FALSE}
+hist_url = "https://dcc.icgc.org/api/v1/download?fn=/PCAWG/clinical_and_histology/pcawg_specimen_histology_August2016_v9.xlsx"
+hist_path = hist_url %>% strsplit(split = "/") %>% unlist %>% tail(n=1)
+
+clin_url = "https://dcc.icgc.org/api/v1/download?fn=/PCAWG/clinical_and_histology/pcawg_donor_clinical_August2016_v9.xlsx"
+clin_path = clin_url %>% strsplit(split = "/") %>% unlist %>% tail(n=1)
+
+sample_sheet_url = "https://dcc.icgc.org/api/v1/download?fn=/PCAWG/data_releases/latest/pcawg_sample_sheet.tsv"
+sample_sheet_path = sample_sheet_url %>% strsplit(split = "/") %>% unlist %>% tail(n=1)
+
+
+download.file(hist_url, destfile = hist_path)
+download.file(clin_url, destfile = clin_path)
+download.file(sample_sheet_url, destfile = sample_sheet_path)
+```
+
+
+## Reformat
+
+```{r eval=FALSE, include=FALSE}
+
+# Read data
+hist_df <- read_excel(path = hist_path)
+clin_df <- read_excel(path = clin_path)
+sample_df <- fread(sample_sheet_path)
+
+sample_level_metadata <- full_join(hist_df, clin_df, by = "icgc_donor_id")
+sample_level_metadata <- full_join(sample_df, sample_level_metadata, by = "icgc_sample_id") %>% 
+  filter(!is.na(aliquot_id))
+
+if(anyDuplicated(sample_level_metadata$aliquot_id) > 0)
+  message("PROBLEM WITH METADATA, DUPLICATED ALIQUOT ID")
+
+sample_level_metadata <- sample_level_metadata %>% 
+  dplyr::rename(Tumor_Sample_Barcode = aliquot_id)
+
+```
+
+
+# Create MAFs
+
+Ensure metadata contains all Tumor_Sample_Barcodes in maf dataframe
+```{r}
+
+sample_level_metadata <- sample_level_metadata %>% filter(Tumor_Sample_Barcode %in% pcawg_minimal_columns_df$Tumor_Sample_Barcode)
+
+ ggVennDiagram(list(
+   maf=unique(pcawg_minimal_columns_df$Tumor_Sample_Barcode), 
+   metadata=sample_level_metadata$Tumor_Sample_Barcode))
+
+```
+
+```{r}
+outfolder = "rds"
+
+dir.create(outfolder)
+
+pcawg_split_ls %>% 
+  seq_along %>% 
+  lapply(function(n) {
+    name = names(pcawg_split_ls)[n] %>% gsub(" ", "_", x = .)
+    maf = read.maf(maf = pcawg_split_ls[[n]], clinicalData = sample_level_metadata)
+    saveRDS(object = maf, file = paste0(outfolder, "/", name, ".rds"))
+  } )
+
+```
+
+# Miscellaneous 
+For more info on what disease-types were binned into each of the PCAWG projects, download tumor map.
+
+```{r}
+subtype_map_url = "https://dcc.icgc.org/api/v1/download?fn=/PCAWG/clinical_and_histology/tumour_subtype_consolidation_map.xlsx"
+subtype_map_path = subtype_map_url %>% strsplit(split = "/") %>% unlist() %>% tail(1)
+
+download.file(subtype_map_url, subtype_map_path)
+```
+
+
