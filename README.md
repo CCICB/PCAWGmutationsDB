@@ -55,7 +55,7 @@ library(TCGAmutations)
 library(maftools)
 
 maf = pcawg_load("Biliary-AdenoCA")
-maftools::plotmafSummary(maf)
+plotmafSummary(maf)
 ```
 
 ![maftools plot](../../blob/main/inst/images/Biliary-AdenoCA_summary.png)
