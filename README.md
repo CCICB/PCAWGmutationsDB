@@ -60,3 +60,6 @@ plotmafSummary(maf)
 ```
 
 ![maftools plot](../../blob/main/inst/images/Biliary-AdenoCA_summary.png)
+
+## Data preprocessing
+![Preparing PCAWG data](inst/markdowns/prep_PCAWG_mafs.Rmd)
