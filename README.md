@@ -51,7 +51,7 @@ Load the dataset of interest using `pcawg_load`.
 The resulting MAF object can be analysed / visualised using the `maftools` R package
 
 ```
-library(TCGAmutations)
+library(PCAWGmutations)
 library(maftools)
 
 maf = pcawg_load("Biliary-AdenoCA")
