@@ -58,4 +58,4 @@ maf = pcawg_load("Biliary-AdenoCA")
 maftools::plotmafSummary(maf)
 ```
 
-![maftools plot](https://github.com/selkamand/PCAWGmutations/inst/images/Biliary-AdenoCA_summary.pdf)
+![maftools plot](../../blob/main/inst/images/Biliary-AdenoCA_summary.pdf)
