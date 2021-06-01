@@ -11,7 +11,7 @@ devtools::install_github("selkamand/PCAWGmutations")
 
 ## Usage
 
-List available datasets
+### List available datasets
 
 ```
 library(PCAWGmutations)
@@ -47,6 +47,7 @@ pcawg_available()
 | Stomach-AdenoCA  	| Stomach, Adenocarcinoma               	|
 
 
+### Load datasets
 Load the dataset of interest using `pcawg_load`. 
 The resulting MAF object can be analysed / visualised using the `maftools` R package
 
