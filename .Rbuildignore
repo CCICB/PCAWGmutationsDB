@@ -1,0 +1,4 @@
+^renv$
+^renv\.lock$
+^PCAWGmutations\.Rproj$
+^\.Rproj\.user$
