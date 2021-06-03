@@ -18,37 +18,37 @@ library(PCAWGmutations)
 pcawg_available()
 ```
 
-| Abbreviation     	| Full name                             	|
-|------------------	|---------------------------------------	|
-| Biliary-AdenoCA  	| Biliary Adenocarcinoma                	|
-| Bone-Cart        	| Bone, Cartilaginous neoplasm          	|
-| Bone-Epith       	| Bone neoplasm, epithelioid            	|
-| Bone-Osteosarc   	| Bone, Osteosarcoma                    	|
-| Breast-AdenoCa   	| Breast, Adenocarcinoma                	|
-| Breast-DCIS      	| Breast, Duct micropapillary carcinoma 	|
-| Breast-LobularCa 	| Breast, Lobular carcinoma             	|
-| CNS-Medullo      	| CNS, Medulloblastoma                  	|
-| CNS-PiloAstro    	| CNS, Pilocytic astrocytoma            	|
-| Eso-AdenoCa      	| Esophagus, Adenocarcinoma             	|
-| Head-SCC         	| Head/Neck Squamous cell carcinoma     	|
-| Kidney-RCC       	| Kidney Renal cell carcinoma           	|
-| Liver-HCC        	| Hepatocellular carcinoma              	|
-| Lymph-BNHL       	| Mature B-cell lymphoma                	|
-| Lymph-CLL        	| Chronic lymphocytic leukemia          	|
-| Lymph-NOS        	| Lymphoma, Not Otherwise Specified     	|
-| Myeloid-AML      	| Acute myeloid leukemia                	|
-| Myeloid-MDS      	| Myelodysplastic syndrome              	|
-| Myeloid-MPN      	| Myelodysplastic syndrome              	|
-| Ovary-AdenoCA    	| Ovary, Adenocarcinoma                 	|
-| Panc-AdenoCA     	| Pancreas, Adenocarcinoma              	|
-| Panc-Endocrine   	| Pancreas, Neuroendocrine tumor        	|
-| Prost-AdenoCA    	| Prostate, Adenocarcinoma              	|
-| Skin-Melanoma    	| Melanoma                              	|
-| Stomach-AdenoCA  	| Stomach, Adenocarcinoma               	|
+| Abbreviation     	| Full name                             	| Samples 	|
+|------------------	|---------------------------------------	|---------	|
+| Biliary-AdenoCA  	| Biliary Adenocarcinoma                	| 34      	|
+| Bone-Cart        	| Bone, Cartilaginous neoplasm          	| 9       	|
+| Bone-Epith       	| Bone neoplasm, epithelioid            	| 11      	|
+| Bone-Osteosarc   	| Bone, Osteosarcoma                    	| 44      	|
+| Breast-AdenoCa   	| Breast, Adenocarcinoma                	| 113     	|
+| Breast-DCIS      	| Breast, Duct micropapillary carcinoma 	| 3       	|
+| Breast-LobularCa 	| Breast, Lobular carcinoma             	| 7       	|
+| CNS-Medullo      	| CNS, Medulloblastoma                  	| 146     	|
+| CNS-PiloAstro    	| CNS, Pilocytic astrocytoma            	| 89      	|
+| Eso-AdenoCa      	| Esophagus, Adenocarcinoma             	| 98      	|
+| Head-SCC         	| Head/Neck Squamous cell carcinoma     	| 13      	|
+| Kidney-RCC       	| Kidney Renal cell carcinoma           	| 74      	|
+| Liver-HCC        	| Hepatocellular carcinoma              	| 273     	|
+| Lymph-BNHL       	| Mature B-cell lymphoma                	| 98      	|
+| Lymph-CLL        	| Chronic lymphocytic leukemia          	| 95      	|
+| Lymph-NOS        	| Lymphoma, Not Otherwise Specified     	| 2       	|
+| Myeloid-AML      	| Acute myeloid leukemia                	| 16      	|
+| Myeloid-MDS      	| Myelodysplastic syndrome              	| 3       	|
+| Myeloid-MPN      	| Myelodysplastic syndrome              	| 51      	|
+| Ovary-AdenoCA    	| Ovary, Adenocarcinoma                 	| 71      	|
+| Panc-AdenoCA     	| Pancreas, Adenocarcinoma              	| 241     	|
+| Panc-Endocrine   	| Pancreas, Neuroendocrine tumor        	| 85      	|
+| Prost-AdenoCA    	| Prostate, Adenocarcinoma              	| 267     	|
+| Skin-Melanoma    	| Melanoma                              	| 70      	|
+| Stomach-AdenoCA  	| Stomach, Adenocarcinoma               	| 37      	|
 
 
 ### Load datasets
-Load the dataset of interest using `pcawg_load`. 
+Load the dataset of interest using `pcawg_load`.
 The resulting MAF object can be analysed / visualised using the `maftools` R package
 
 ```
