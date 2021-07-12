@@ -1,5 +1,4 @@
 # PCAWGmutations
-![r-universe](https://CCICB.r-universe.dev/badges/PCAWGmutations)
 
 R package for loading PCAWG data into R as MAF objects
 
@@ -8,7 +7,8 @@ Heavily inspired by the [**TCGAmutations**](https://github.com/PoisonAlien/TCGAm
 ## Installation
 
 ```
-install.packages("PCAWGmutations", repos = "https://ropensci.r-universe.dev")
+install.packages("remotes")
+remotes::install_github("selkamand/PCAWGmutations")
 ```
 
 ## Usage
