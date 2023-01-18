@@ -1,26 +1,26 @@
-Abbreviation	Full name	Samples
-Biliary-AdenoCA	Biliary Adenocarcinoma	34
-Bone-Cart	"Bone, Cartilaginous neoplasm"	9
-Bone-Epith	"Bone neoplasm, epithelioid"	11
-Bone-Osteosarc	"Bone, Osteosarcoma"	44
-Breast-AdenoCa	"Breast, Adenocarcinoma"	113
-Breast-DCIS	"Breast, Duct micropapillary carcinoma"	3
-Breast-LobularCa	"Breast, Lobular carcinoma"	7
-CNS-Medullo	"CNS, Medulloblastoma"	146
-CNS-PiloAstro	"CNS, Pilocytic astrocytoma"	89
-Eso-AdenoCa	"Esophagus, Adenocarcinoma"	98
-Head-SCC	Head/Neck Squamous cell carcinoma	13
-Kidney-RCC	Kidney Renal cell carcinoma	74
-Liver-HCC	Hepatocellular carcinoma	273
-Lymph-BNHL	Mature B-cell lymphoma	98
-Lymph-CLL	Chronic lymphocytic leukemia	95
-Lymph-NOS	"Lymphoma, Not Otherwise Specified"	2
-Myeloid-AML	Acute myeloid leukemia	16
-Myeloid-MDS	Myelodysplastic syndrome	3
-Myeloid-MPN	Myelodysplastic syndrome	51
-Ovary-AdenoCA	"Ovary, Adenocarcinoma"	71
-Panc-AdenoCA	"Pancreas, Adenocarcinoma"	241
-Panc-Endocrine	"Pancreas, Neuroendocrine tumor"	85
-Prost-AdenoCA	"Prostate, Adenocarcinoma"	267
-Skin-Melanoma	Melanoma	70
-Stomach-AdenoCA	"Stomach, Adenocarcinoma"	37
+Abbreviation	Full name	Samples	DOI
+Biliary-AdenoCA	Biliary Adenocarcinoma	34	https://doi.org/10.1038/s41586-020-1969-6
+Bone-Cart	"Bone, Cartilaginous neoplasm"	9	https://doi.org/10.1038/s41586-020-1969-6
+Bone-Epith	"Bone neoplasm, epithelioid"	11	https://doi.org/10.1038/s41586-020-1969-6
+Bone-Osteosarc	"Bone, Osteosarcoma"	44	https://doi.org/10.1038/s41586-020-1969-6
+Breast-AdenoCa	"Breast, Adenocarcinoma"	113	https://doi.org/10.1038/s41586-020-1969-6
+Breast-DCIS	"Breast, Duct micropapillary carcinoma"	3	https://doi.org/10.1038/s41586-020-1969-6
+Breast-LobularCa	"Breast, Lobular carcinoma"	7	https://doi.org/10.1038/s41586-020-1969-6
+CNS-Medullo	"CNS, Medulloblastoma"	146	https://doi.org/10.1038/s41586-020-1969-6
+CNS-PiloAstro	"CNS, Pilocytic astrocytoma"	89	https://doi.org/10.1038/s41586-020-1969-6
+Eso-AdenoCa	"Esophagus, Adenocarcinoma"	98	https://doi.org/10.1038/s41586-020-1969-6
+Head-SCC	Head/Neck Squamous cell carcinoma	13	https://doi.org/10.1038/s41586-020-1969-6
+Kidney-RCC	Kidney Renal cell carcinoma	74	https://doi.org/10.1038/s41586-020-1969-6
+Liver-HCC	Hepatocellular carcinoma	273	https://doi.org/10.1038/s41586-020-1969-6
+Lymph-BNHL	Mature B-cell lymphoma	98	https://doi.org/10.1038/s41586-020-1969-6
+Lymph-CLL	Chronic lymphocytic leukemia	95	https://doi.org/10.1038/s41586-020-1969-6
+Lymph-NOS	"Lymphoma, Not Otherwise Specified"	2	https://doi.org/10.1038/s41586-020-1969-6
+Myeloid-AML	Acute myeloid leukemia	16	https://doi.org/10.1038/s41586-020-1969-6
+Myeloid-MDS	Myelodysplastic syndrome	3	https://doi.org/10.1038/s41586-020-1969-6
+Myeloid-MPN	Myelodysplastic syndrome	51	https://doi.org/10.1038/s41586-020-1969-6
+Ovary-AdenoCA	"Ovary, Adenocarcinoma"	71	https://doi.org/10.1038/s41586-020-1969-6
+Panc-AdenoCA	"Pancreas, Adenocarcinoma"	241	https://doi.org/10.1038/s41586-020-1969-6
+Panc-Endocrine	"Pancreas, Neuroendocrine tumor"	85	https://doi.org/10.1038/s41586-020-1969-6
+Prost-AdenoCA	"Prostate, Adenocarcinoma"	267	https://doi.org/10.1038/s41586-020-1969-6
+Skin-Melanoma	Melanoma	70	https://doi.org/10.1038/s41586-020-1969-6
+Stomach-AdenoCA	"Stomach, Adenocarcinoma"	37	https://doi.org/10.1038/s41586-020-1969-6
