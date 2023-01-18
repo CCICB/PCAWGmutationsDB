@@ -1,4 +1,4 @@
-# PCAWGmutations
+# PCAWGmutationsDB
 
 R package for loading PCAWG data into R as MAF objects
 
