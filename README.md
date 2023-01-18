@@ -2,12 +2,12 @@
 
 R package for loading PCAWG data into R as MAF objects
 
-**Warning**
-Consider using the [**PCAWGmutations**](https://github.com/CCICB/PCAWGmutations) package instead. PCAWGmutations streams PCAWG into your R environment, meaning you don't need waste space downloading the data.
+> **Warning**
+> Consider using the [**PCAWGmutations**](https://github.com/CCICB/PCAWGmutations) package instead. PCAWGmutations streams PCAWG into your R environment, meaning you don't need waste space downloading the data.
 
 
-**note**
-Heavily inspired by the [**TCGAmutations**](https://github.com/PoisonAlien/TCGAmutations) package
+> **note**
+> Heavily inspired by the [**TCGAmutations**](https://github.com/PoisonAlien/TCGAmutations) package
 
 
 ## Installation
