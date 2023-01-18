@@ -4,14 +4,14 @@ R package for loading PCAWG data into R as MAF objects
 
 Heavily inspired by the [**TCGAmutations**](https://github.com/PoisonAlien/TCGAmutations) package
 
-Consider using the [**PCAWGmutations**](https://github.com/PoisonAlien/PCAWGmutations) package instead, which streams the mafs into your R environment from github, meaning you don't need waste space downloading the data.
+Consider using the [**PCAWGmutations**](https://github.com/CCICB/PCAWGmutations) package instead, which streams the mafs into your R environment from github, meaning you don't need waste space downloading the data.
 
 
 ## Installation
 
 ```
 install.packages("remotes")
-remotes::install_github("selkamand/PCAWGmutationsDB")
+remotes::install_github("CCICB/PCAWGmutationsDB")
 ```
 
 ## Usage
